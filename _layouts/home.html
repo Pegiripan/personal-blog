@@ -1,0 +1,45 @@
+---
+layout: default
+home: true
+---
+<p>
+  Saya Pegi Ripansyah, orang-orang memanggil saya Pegi atau Ripan. Saya sering menjelajah deepweb hanya untuk kesenangan pribadi. Saya adalah penggemar dan pecandu kopi sachetan terutama kopi Good Day. Seringkali bermimpi ingin mewujudkan sesuatu dari keinginan diri sendiri. Saya juga salah satu anggota komunitas Maxteroit, yang merupakan komunitas IT Enthusiast asal kota bandung.
+</p>
+
+<a href="/about/">Baca selengkapnya...</a>
+
+<hr style="margin-top: 30px;">
+
+<div class="search-article">
+  <label for="search-input" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(128,128,128,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  </label>
+  <input type="search" id="search-input" placeholder="Find some articles" aria-label="Search">
+</div>
+<ul id="search-results"></ul>
+
+<h3 class="posts-item-note" aria-label="Recent Posts">Postingan Terbaru</h3>
+
+{%- for post in site.posts limit: site.number_of_posts -%}
+<article class="post-item">
+  <span class="post-item-date">{{ post.date | date: "%b %d" }}</span>
+  <h4 class="post-item-title">
+    <a href="{{ post.url }}">{{ post.title | escape }}</a>
+  </h4>
+</article>
+{%- endfor -%}
+
+{%- if page.url == '/' -%}
+  <script src="/assets/js/search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/search.json',
+    });
+  </script>
+{%- endif -%}
+<br>
+<a href="/blog">Baca tulisan lainnya...</a>
+
+
